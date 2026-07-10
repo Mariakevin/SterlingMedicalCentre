@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sterling Medical Centre — Trusted Healthcare in Chennai</title>
+<meta name="description" content="Sterling Medical Centre in Chennai offers compassionate, expert healthcare in cardiology, pediatrics, neurology, and orthopedics. Book your appointment at our Nungambakkam clinic."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 C25 10 10 40 10 60 C10 80 25 90 50 90 C75 90 90 80 90 60 C90 40 75 10 50 10Z' fill='%237A2E2E'/%3E%3Cpath d='M35 55 Q50 30 65 55' stroke='%23C88A2C' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- ============ Navigation ============ -->
+<header class="nav" id="navbar">
+  <div class="container nav__inner">
+      <a href="#" class="nav__logo">
+      <span class="nav__logo-icon material-symbols-outlined" aria-hidden="true">home</span>
+      Sterling
+    </a>
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="#about" class="nav__link nav__link--active">Philosophy</a>
+      <a href="#specialties" class="nav__link">Specialties</a>
+      <a href="#team" class="nav__link">Team</a>
+      <a href="#voices" class="nav__link">Stories</a>
+      <a href="#visit" class="nav__link">Visit</a>
+    </nav>
+    <a href="tel:+914428345678" class="nav__phone" aria-label="Call us">
+      <span class="material-symbols-outlined" aria-hidden="true">call</span>
+      <span>+91 44 2834 5678</span>
+    </a>
+    <a href="#visit" class="nav__cta">Book a Visit &rarr;</a>
+    <div class="nav__actions">
+      <button class="nav__theme" id="theme-toggle" aria-label="Toggle dark mode">
+        <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+      </button>
+      <button class="nav__toggle" id="menu-toggle" aria-label="Open menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ Mobile Menu ============ -->
+<div class="mobile-menu__overlay" id="menu-overlay"></div>
+<aside class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <div class="mobile-menu__header">
+    <span class="mobile-menu__brand">Sterling</span>
+    <button class="mobile-menu__close" id="menu-close" aria-label="Close menu">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <a href="#about" class="mobile-menu__link">Philosophy</a>
+  <a href="#specialties" class="mobile-menu__link">Specialties</a>
+  <a href="#team" class="mobile-menu__link">Team</a>
+  <a href="#voices" class="mobile-menu__link">Stories</a>
+  <a href="#visit" class="mobile-menu__link">Visit</a>
+  <a href="#visit" class="mobile-menu__cta">Book a Visit</a>
+</aside>
+
+<!-- ============ The Welcome ============ -->
+<section class="welcome" id="welcome">
+  <div class="welcome__bg"></div>
+  <div class="welcome__glow"></div>
+  <div class="container welcome__inner">
+    <div class="welcome__grid">
+      <div class="welcome__content">
+        <span class="welcome__label fade-up">Sterling Medical Centre</span>
+        <h1 class="display-heading welcome__title fade-up" data-delay="100">
+          Care in your rhythm
+        </h1>
+        <p class="welcome__lead fade-up" data-delay="150">
+          Where modern medicine finds its natural pace — examined, understood, and guided by specialists who see the whole picture.
+        </p>
+        <p class="welcome__text fade-up" data-delay="200">
+          Here, modern medicine and the wisdom of nature move as one.
+          Care doesn&rsquo;t rush&thinsp;&mdash;&thinsp;it flows.
+        </p>
+        <div class="welcome__actions fade-up" data-delay="300">
+          <a href="#visit" class="welcome__cta">
+            Begin your journey
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="welcome__stats fade-up" data-delay="350">
+          <div class="welcome__stat">
+            <span class="welcome__stat-value">10,000+</span>
+            <span class="welcome__stat-label">Patients trusted</span>
+          </div>
+          <div class="welcome__stat">
+            <span class="welcome__stat-value">45+</span>
+            <span class="welcome__stat-label">Years combined</span>
+          </div>
+          <div class="welcome__stat">
+            <span class="welcome__stat-value">3</span>
+            <span class="welcome__stat-label">Specialists</span>
+          </div>
+        </div>
+      </div>
+      <div class="welcome__visual fade-up" data-delay="200">
+        <div class="welcome__panel">
+          <div class="welcome__panel-header">
+            <span class="material-symbols-outlined" aria-hidden="true">groups</span>
+            <span>Your care team</span>
+          </div>
+          <div class="welcome__panel-doctors">
+            <div class="welcome__panel-doctor">
+              <div class="welcome__panel-avatar" style="background:var(--color-eucalyptus);">
+                <span class="material-symbols-outlined">favorite</span>
+              </div>
+              <div>
+                <div class="welcome__panel-name">Dr. Priya Venkatesh</div>
+                <div class="welcome__panel-role">Cardiologist &middot; 15 yrs</div>
+              </div>
+            </div>
+            <div class="welcome__panel-doctor">
+              <div class="welcome__panel-avatar" style="background:var(--color-honey);">
+                <span class="material-symbols-outlined">pediatrics</span>
+              </div>
+              <div>
+                <div class="welcome__panel-name">Dr. Arun Nair</div>
+                <div class="welcome__panel-role">Pediatrician &middot; 12 yrs</div>
+              </div>
+            </div>
+            <div class="welcome__panel-doctor">
+              <div class="welcome__panel-avatar" style="background:var(--color-eucalyptus);">
+                <span class="material-symbols-outlined">neurology</span>
+              </div>
+              <div>
+                <div class="welcome__panel-name">Dr. Lakshmi Iyer</div>
+                <div class="welcome__panel-role">Neurologist &middot; 18 yrs</div>
+              </div>
+            </div>
+          </div>
+          <div class="welcome__panel-footer">
+            <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+            <span>Madras Medical College &middot; CMC Vellore &middot; SRMC</span>
+          </div>
+        </div>
+        <div class="welcome__decor">
+          <span class="material-symbols-outlined" aria-hidden="true">spa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Valley Curve Divider -->
+  <svg class="valley-curve" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 80 C200 80 300 30 500 30 C700 30 800 80 1000 80 C1200 80 1300 30 1440 30 L1440 120 L0 120 Z"/>
+  </svg>
+</section>
+
+<!-- ============ The Valley Way ============ -->
+<section class="pillars" id="about">
+  <div class="container">
+    <div class="section__header fade-up" style="max-width:640px;margin:0 auto;text-align:center;">
+      <span class="label section__eyebrow" style="color:var(--color-honey);">Our Philosophy</span>
+      <h2 class="section-heading section-heading--light">Care that moves at the pace of nature</h2>
+      <p class="section-subheading" style="margin:0;color:var(--color-sage);">
+        We don&rsquo;t believe in assembly-line medicine. Every person who walks through our doors
+        begins a journey that unfolds at its own rhythm&thinsp;&mdash;&thinsp;examined, understood, and guided
+        by a team that sees the whole picture.
+      </p>
+    </div>
+    <div class="pillars__grid">
+      <article class="pillar fade-up">
+        <div class="pillar__icon-wrap">
+          <span class="pillar__icon material-symbols-outlined" aria-hidden="true">growing</span>
+        </div>
+        <h3 class="pillar__title">Rooted</h3>
+        <p class="pillar__text">Deep expertise, earned over years. Our specialists bring rigorous training and quiet confidence to every consultation&thinsp;&mdash;&thinsp;care built on a foundation you can trust.</p>
+      </article>
+      <article class="pillar fade-up" data-delay="100">
+        <div class="pillar__icon-wrap">
+          <span class="pillar__icon material-symbols-outlined" aria-hidden="true">water</span>
+        </div>
+        <h3 class="pillar__title">Flowing</h3>
+        <p class="pillar__text">No rigid protocols. Treatment bends to your life, your schedule, your comfort. We listen first, then design a path that moves with you&thinsp;&mdash;&thinsp;not against you.</p>
+      </article>
+      <article class="pillar fade-up" data-delay="200">
+        <div class="pillar__icon-wrap">
+          <span class="pillar__icon material-symbols-outlined" aria-hidden="true">shift</span>
+        </div>
+        <h3 class="pillar__title">Rising</h3>
+        <p class="pillar__text">Health isn&rsquo;t just the absence of illness&thinsp;&mdash;&thinsp;it&rsquo;s the energy to live fully. We aim for outcomes that restore not just function, but the joy of feeling well.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Our Specialties ============ -->
+<section class="section section--cream" id="specialties">
+  <div class="container">
+    <div class="section__header fade-up">
+      <span class="label section__eyebrow">Our Specialties</span>
+      <h2 class="section-heading">Expertise across every life stage</h2>
+      <p class="section-subheading" style="margin:0 auto;">
+        From heart health to neurological care, our specialists bring advanced training and
+        decades of experience to every consultation.
+      </p>
+    </div>
+    <div class="specialties__grid">
+      <div class="specialty-item fade-up">
+        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">ecg_heart</span>
+        <div class="specialty-item__body">
+          <h3 class="specialty-item__title">Cardiology <span class="specialty-item__cluster">Heart &amp; Rhythm</span></h3>
+          <p class="specialty-item__text">Preventive screenings, heart failure management, ECG, echocardiography, and interventional cardiology.</p>
+        </div>
+      </div>
+      <div class="specialty-item fade-up" data-delay="100">
+        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">pediatrics</span>
+        <div class="specialty-item__body">
+          <h3 class="specialty-item__title">Pediatrics <span class="specialty-item__cluster">Growing Strong</span></h3>
+          <p class="specialty-item__text">Well-child visits, immunisations, developmental screenings, and adolescent medicine in a child-friendly setting.</p>
+        </div>
+      </div>
+      <div class="specialty-item fade-up" data-delay="200">
+        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">neurology</span>
+        <div class="specialty-item__body">
+          <h3 class="specialty-item__title">Neurology <span class="specialty-item__cluster">Mind &amp; Movement</span></h3>
+          <p class="specialty-item__text">Stroke care, epilepsy management, headache disorders, movement disorders, and nerve conduction studies.</p>
+        </div>
+      </div>
+      <div class="specialty-item fade-up" data-delay="300">
+        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">orthopedics</span>
+        <div class="specialty-item__body">
+          <h3 class="specialty-item__title">Orthopedics <span class="specialty-item__cluster">Strength in Motion</span></h3>
+          <p class="specialty-item__text">Joint replacements, sports injuries, spine care, fracture management, and rehabilitation therapy.</p>
+        </div>
+      </div>
+      <div class="specialty-item fade-up" data-delay="400">
+        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">pulmonology</span>
+        <div class="specialty-item__body">
+          <h3 class="specialty-item__title">Pulmonology <span class="specialty-item__cluster">Breath &amp; Vitality</span></h3>
+          <p class="specialty-item__text">Asthma and allergy management, sleep studies, pulmonary function testing, and respiratory therapy.</p>
+        </div>
+      </div>
+      <div class="specialty-item fade-up" data-delay="500">
+        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">dermatology</span>
+        <div class="specialty-item__body">
+          <h3 class="specialty-item__title">Dermatology <span class="specialty-item__cluster">Skin &amp; Care</span></h3>
+          <p class="specialty-item__text">Skin cancer screenings, acne and eczema treatment, cosmetic dermatology, and paediatric dermatology.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ The Circle ============ -->
+<section class="circle" id="team">
+  <div class="container">
+    <div class="section__header fade-up">
+      <span class="label section__eyebrow">Your Care Circle</span>
+      <h2 class="section-heading">Specialists you can trust</h2>
+      <p class="section-subheading" style="margin:0 auto;">
+        Every member of our team brings deep expertise, years of training, and a genuine commitment
+        to seeing you thrive&thinsp;&mdash;&thinsp;not as a case, but as a person.
+      </p>
+    </div>
+    <div class="circle__grid">
+      <article class="circle-card fade-up">
+        <div class="circle-card__portrait">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyOQ6Vum0f7cGmBArWXYQbEqF-mUzXJ9Mr7w-sv-7aDS-akQihJSgrqdapek-9qm7vAZ2Nj6Q-1Tt0uoAWJoMya_1ea1LPIhgKeCjutxrxOxcdlFJfngRw_6fzJFWd6Zm1-YcTel2rTgKCBoBU1GP7STghBBixyVHE9h0j54A8WqGaHe9kSL3gvSXnOMwIVcbbfvNs6WXcn6t7JHkyMMfH_p2EGLS6GEiYL24eLuYicKWuLo-KnbdMWUh4zdtL52ewggAfucuE6FQ"
+            alt="Dr. Priya Venkatesh"
+            loading="lazy"
+          >
+        </div>
+        <div class="circle-card__body">
+          <span class="circle-card__role">Cardiologist</span>
+          <h3 class="circle-card__name">Dr. Priya Venkatesh</h3>
+          <p class="circle-card__bio">Specialising in preventive cardiology, heart failure management, and cardiac diagnostics. Priya believes the best treatment begins with a conversation, not a prescription.</p>
+          <div class="circle-card__meta">
+            <span class="circle-card__exp"><span class="material-symbols-outlined" aria-hidden="true">calendar_month</span> 15 yrs experience</span>
+            <span class="circle-card__edu"><span class="material-symbols-outlined" aria-hidden="true">school</span> Madras Medical College</span>
+          </div>
+          <a href="#visit" class="circle-card__cta">Consult Dr. Venkatesh &rarr;</a>
+        </div>
+      </article>
+      <article class="circle-card fade-up" data-delay="100">
+        <div class="circle-card__portrait">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTtztSPY70aPIFzdyF4ywVM0iKvS5GUiCfcBTT3XVSjN8KoY5_hjNXUhF9KpcJdGtvWDy6FJKrEQWQMPyciCUQf-vtXVNeD_4TTl5m-MMdUvNIskcF9WfS9eMaC_9WymAubRBfWGt4cdIUsNjOYlQjFzWR2wNOvCkcJiI3nDTsrjoWI1U2sWik-eQtLWCorlS-JtbjiTsYex8P0uVeVTuhn9SqlWAg8YcK2qzh1ZOY28iGuS4ZT1YpcrWgkur2PlFyhS8CAi3fXcU"
+            alt="Dr. Arun Nair"
+            loading="lazy"
+          >
+        </div>
+        <div class="circle-card__body">
+          <span class="circle-card__role">Pediatrician</span>
+          <h3 class="circle-card__name">Dr. Arun Nair</h3>
+          <p class="circle-card__bio">With a gentle approach and a focus on developmental pediatrics, Arun makes every child feel safe and every parent feel heard&thinsp;&mdash;&thinsp;from infancy through adolescence.</p>
+          <div class="circle-card__meta">
+            <span class="circle-card__exp"><span class="material-symbols-outlined" aria-hidden="true">calendar_month</span> 12 yrs experience</span>
+            <span class="circle-card__edu"><span class="material-symbols-outlined" aria-hidden="true">school</span> Christian Medical College, Vellore</span>
+          </div>
+          <a href="#visit" class="circle-card__cta">Consult Dr. Nair &rarr;</a>
+        </div>
+      </article>
+      <article class="circle-card fade-up" data-delay="200">
+        <div class="circle-card__portrait">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnQbu8oKeiN5FrACr8qE5HzjQg9x_BzFrQjXkZl6AimKtHHujGVDv3WKhXbaH6bM9Ynxzd_UrYaJkk9GGvCgC_21_awn_3tJpLbF00W3dFPoPDtV6LYIIRYeUuVaycxasqOBuk33qIqLBj_nHDDywZeS2vuh-wjwDauK4Bc6vO580umJ8yK6xwyOX4zgOLjz6dRF_ON8M22noAb0ONt22nD8cJCHYe1TIsIom6pXp9uFzvJuDsQa5_v7-UFPVsh8OW-lT7rEEmErY"
+            alt="Dr. Lakshmi Iyer"
+            loading="lazy"
+          >
+        </div>
+        <div class="circle-card__body">
+          <span class="circle-card__role">Neurologist</span>
+          <h3 class="circle-card__name">Dr. Lakshmi Iyer</h3>
+          <p class="circle-card__bio">Trained in stroke neurology and movement disorders, Lakshmi combines advanced diagnostics with a deeply compassionate bedside manner&thinsp;&mdash;&thinsp;restoring clarity, one patient at a time.</p>
+          <div class="circle-card__meta">
+            <span class="circle-card__exp"><span class="material-symbols-outlined" aria-hidden="true">calendar_month</span> 18 yrs experience</span>
+            <span class="circle-card__edu"><span class="material-symbols-outlined" aria-hidden="true">school</span> Sri Ramachandra Medical College</span>
+          </div>
+          <a href="#visit" class="circle-card__cta">Consult Dr. Iyer &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Voices ============ -->
+<section class="voices" id="voices">
+  <div class="container">
+    <div class="section__header fade-up">
+      <span class="label section__eyebrow">Voices from the Valley</span>
+      <h2 class="section-heading">What our patients carry with them</h2>
+    </div>
+    <div class="voices__list">
+      <article class="voice fade-up">
+        <p class="voice__text">
+          &ldquo;I&rsquo;d been to three other clinics before Sterling. Nobody listened the way Dr. Venkatesh did.
+          She didn&rsquo;t rush me, didn&rsquo;t look at a screen while I spoke. For the first time, I felt like
+          my health was in good hands.&rdquo;
+        </p>
+        <div class="voice__attribution">
+          <span class="voice__name">Priya S.</span>
+          <span class="voice__detail">Chennai</span>
+        </div>
+      </article>
+      <article class="voice fade-up" data-delay="100">
+        <p class="voice__text">
+          &ldquo;Taking my son for a check-up used to be a battle. At Sterling, the paediatric team made it
+          feel like play. He actually asked when we could go back. That&rsquo;s the kind of care every parent hopes for.&rdquo;
+        </p>
+        <div class="voice__attribution">
+          <span class="voice__name">Arjun K.</span>
+          <span class="voice__detail">Nungambakkam</span>
+        </div>
+      </article>
+      <article class="voice voice--featured fade-up" data-delay="200">
+        <p class="voice__text">
+          &ldquo;After my stroke, Dr. Iyer didn&rsquo;t just treat my symptoms&thinsp;&mdash;&thinsp;she treated me.
+          She explained every step of my recovery, celebrated every small win, and gave me back my independence.
+          I can&rsquo;t recommend this team enough.&rdquo;
+        </p>
+        <div class="voice__attribution">
+          <span class="voice__name">Meena R.</span>
+          <span class="voice__detail">Adyar</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Your Visit ============ -->
+<section class="visit" id="visit">
+  <!-- Valley Curve (top) -->
+  <svg class="valley-curve valley-curve--top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 80 C200 80 300 30 500 30 C700 30 800 80 1000 80 C1200 80 1300 30 1440 30 L1440 120 L0 120 Z"/>
+  </svg>
+  <div class="container">
+    <div class="section__header fade-up">
+      <span class="label section__eyebrow label--accent">Plan Your Visit</span>
+      <h2 class="section-heading section-heading--light">Your first step toward balance</h2>
+    </div>
+    <div class="visit__grid">
+      <div class="visit__info fade-up">
+        <h3 class="visit__subtitle">What to expect</h3>
+        <div class="visit__items">
+          <div class="visit-item">
+            <span class="visit-item__num">01</span>
+            <div class="visit-item__content">
+              <h4 class="visit-item__title">You arrive</h4>
+              <p class="visit-item__text">Warm tea, soft light, no formality. Our space is designed to calm before your consultation even begins.</p>
+            </div>
+          </div>
+          <div class="visit-item">
+            <span class="visit-item__num">02</span>
+            <div class="visit-item__content">
+              <h4 class="visit-item__title">We listen</h4>
+              <p class="visit-item__text">Your consultation starts with conversation&thinsp;&mdash;&thinsp;not a clipboard. We want to understand your story before we look at symptoms.</p>
+            </div>
+          </div>
+          <div class="visit-item">
+            <span class="visit-item__num">03</span>
+            <div class="visit-item__content">
+              <h4 class="visit-item__title">We plan together</h4>
+              <p class="visit-item__text">No decisions made without you. We explain your options, answer every question, and design a plan you feel good about.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="visit__booking fade-up" data-delay="100">
+        <div class="visit__card">
+          <h3 class="visit__card-title">Book your visit</h3>
+          <form class="form" id="booking-form" novalidate>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="firstName">First Name</label>
+                <input class="form__input" id="firstName" placeholder="Jane" type="text" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="lastName">Last Name</label>
+                <input class="form__input" id="lastName" placeholder="Doe" type="text" required>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="email">Email</label>
+                <input class="form__input" id="email" placeholder="jane@example.com" type="email" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="phone">Phone</label>
+                <input class="form__input" id="phone" placeholder="+91 98765 43210" type="tel" inputmode="tel" required>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="care-type">I&rsquo;d like to discuss</label>
+              <select class="form__select" id="care-type">
+                <option>Heart &amp; Rhythm</option>
+                <option>Growing Strong</option>
+                <option>Mind &amp; Movement</option>
+                <option>Strength in Motion</option>
+                <option>General consultation</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="message">Anything you&rsquo;d like us to know (optional)</label>
+              <textarea class="form__textarea" id="message" placeholder="A brief note about what brings you in..." rows="3"></textarea>
+            </div>
+            <button class="btn--submit" type="submit">Book Your Visit</button>
+            <p class="form__footnote">We&rsquo;ll reach out within 24 hours to confirm your appointment.</p>
+          </form>
+        </div>
+        <div class="visit__contact">
+          <div class="visit__contact-item">
+            <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+            <span>No. 7, Sterling Road, Nungambakkam, Chennai&thinsp;&mdash;&thinsp;600 034</span>
+          </div>
+          <div class="visit__contact-item">
+            <span class="material-symbols-outlined" aria-hidden="true">call</span>
+            <span>+91 44 2834 5678</span>
+          </div>
+          <div class="visit__contact-item">
+            <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+            <span>care@greenvalleyclinic.in</span>
+          </div>
+          <div class="visit__hours">
+            <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+            <div>
+              <div class="visit__hours-label">Clinic Hours</div>
+              <div class="visit__hours-row"><span>Monday – Saturday</span><span>8:00 AM – 7:00 PM</span></div>
+              <div class="visit__hours-row"><span>Sunday</span><span>9:00 AM – 1:00 PM</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Roots ============ -->
+<footer class="roots">
+  <div class="container">
+    <div class="roots__grid">
+      <div class="roots__brand">
+        <a href="#" class="roots__logo">Sterling</a>
+        <p class="roots__tagline">Care that flows from the heart of Chennai.</p>
+      </div>
+      <div class="roots__links">
+        <a href="#about" class="roots__link">Philosophy</a>
+        <a href="#specialties" class="roots__link">Specialties</a>
+        <a href="#team" class="roots__link">Team</a>
+        <a href="#voices" class="roots__link">Stories</a>
+        <a href="#visit" class="roots__link">Visit</a>
+      </div>
+      <div class="roots__social">
+        <a href="#" class="roots__social-link" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" class="roots__social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="roots__bottom">
+      <p class="roots__copyright">&copy; <span id="copyright-year">2024</span> Sterling Medical Centre. Grounded in Chennai.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
