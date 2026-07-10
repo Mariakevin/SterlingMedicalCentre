@@ -1959,7 +1959,7 @@ h1, h2, h3, h4, h5, h6 {
   font-variation-settings: 'FILL' 1;
 }
 
-/* --- The Valley Way (Pillars) --- */
+/* --- Our Philosophy (Pillars) --- */
 .pillars {
   background: var(--color-evergreen);
   padding: var(--space-20) 0;
@@ -2262,7 +2262,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-cream);
 }
 
-/* --- Voices from the Valley --- */
+/* --- Patient Stories --- */
 .voices {
   padding: var(--space-20) 0;
   background: var(--color-stone-dark);
