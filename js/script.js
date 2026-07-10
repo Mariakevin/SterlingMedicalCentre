@@ -33,17 +33,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Navbar Scroll ---
   const nav = document.querySelector('.nav');
+  const progressBar = document.getElementById('progressBar');
+  const backToTop = document.getElementById('backToTop');
   let lastScroll = 0;
 
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (currentScroll / docHeight) * 100 : 0;
+
     if (currentScroll > 80) {
       nav.classList.add('nav--scrolled');
     } else {
       nav.classList.remove('nav--scrolled');
     }
+
+    if (progressBar) {
+      progressBar.style.width = scrollPercent + '%';
+    }
+
+    if (backToTop) {
+      backToTop.classList.toggle('back-to-top--visible', currentScroll > 400);
+    }
+
     lastScroll = currentScroll;
   }, { passive: true });
+
+  // Back to top click
+  if (backToTop) {
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // --- Active nav link on scroll ---
+  const navLinks = document.querySelectorAll('.nav__link');
+  const sections = [];
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const section = document.querySelector(href);
+      if (section) sections.push({ el: section, link: link });
+    }
+  });
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('nav__link--active'));
+        const match = sections.find(s => s.el === entry.target);
+        if (match) match.link.classList.add('nav__link--active');
+      }
+    });
+  }, {
+    threshold: 0.25,
+    rootMargin: '-80px 0px 0px 0px'
+  });
+
+  sections.forEach(s => sectionObserver.observe(s.el));
 
   // --- Mobile Menu ---
   const toggleBtn = document.getElementById('menu-toggle');

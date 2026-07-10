@@ -207,6 +207,17 @@ h1, h2, h3, h4, h5, h6 {
               box-shadow var(--duration-normal) var(--ease-out-expo);
 }
 
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-honey);
+  width: 0%;
+  transition: width 50ms linear;
+  z-index: 1;
+}
+
 .nav--scrolled {
   background: var(--color-cream);
   backdrop-filter: blur(16px);
@@ -2680,6 +2691,101 @@ h1, h2, h3, h4, h5, h6 {
 :root.dark .roots__social-link {
   background: var(--color-evergreen);
   color: var(--color-cream);
+}
+
+/* --- Back to Top --- */
+.back-to-top {
+  position: fixed;
+  bottom: var(--space-8);
+  right: var(--space-8);
+  z-index: 900;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-eucalyptus);
+  color: var(--color-white);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity var(--duration-normal) ease,
+              transform var(--duration-normal) var(--ease-out-expo),
+              background var(--duration-fast) ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: var(--color-evergreen);
+}
+
+:root.dark .back-to-top {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+/* --- Section Scroll Margins (for smooth anchor nav) --- */
+#about,
+#specialties,
+#team,
+#voices,
+#visit {
+  scroll-margin-top: 80px;
+}
+
+/* --- Focus Styles --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-honey);
+  outline-offset: 2px;
+}
+
+/* --- Card hover lifts --- */
+.specialty-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.circle-card:hover {
+  transform: translateY(-4px);
+}
+
+.doctor-card__cta:hover {
+  background: var(--color-eucalyptus);
+  color: var(--color-white);
+  border-color: var(--color-eucalyptus);
+}
+
+:root.dark .doctor-card__cta:hover {
+  background: var(--color-evergreen);
+  color: var(--color-cream);
+  border-color: var(--color-evergreen);
+}
+
+/* --- Form input focus --- */
+.form__input:focus,
+.form__select:focus,
+.form__textarea:focus {
+  border-color: var(--color-eucalyptus);
+  box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.12);
+}
+
+:root.dark .form__input:focus,
+:root.dark .form__select:focus,
+:root.dark .form__textarea:focus {
+  border-color: var(--color-eucalyptus);
+  box-shadow: 0 0 0 3px rgba(212, 106, 90, 0.2);
 }
 
 /* --- Responsive --- */
