@@ -1467,6 +1467,11 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-cream);
 }
 
+:root.dark .nav__phone {
+  color: var(--color-evergreen);
+  border-color: var(--color-stone);
+}
+
 :root.dark .nav__cta:hover {
   background: var(--color-eucalyptus);
 }
