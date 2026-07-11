@@ -1492,7 +1492,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: var(--color-evergreen);
+  background: var(--color-cream);
   padding: 8rem 0 6rem;
 }
 
@@ -1502,8 +1502,8 @@ h1, h2, h3, h4, h5, h6 {
   background:
     radial-gradient(ellipse at 25% 40%, rgba(196,30,58,0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 75% 60%, rgba(196,30,58,0.08) 0%, transparent 50%),
-    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px),
-    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 61px);
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,0,0,0.02) 60px, rgba(0,0,0,0.02) 61px),
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(0,0,0,0.015) 60px, rgba(0,0,0,0.015) 61px);
   animation: contour-shift 30s linear infinite;
 }
 
@@ -1561,7 +1561,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 20vw;
   top: 30%;
   left: 60%;
-  background: radial-gradient(circle, var(--color-white) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--color-eucalyptus) 0%, transparent 70%);
   animation: shape-drift 30s ease-in-out infinite alternate;
 }
 
@@ -1608,7 +1608,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-honey);
   display: inline-block;
   padding: var(--space-2) var(--space-4);
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid var(--color-stone);
   border-radius: var(--radius-full);
   margin-bottom: var(--space-6);
 }
@@ -1617,14 +1617,14 @@ h1, h2, h3, h4, h5, h6 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.1;
-  color: var(--color-cream);
+  color: var(--color-evergreen);
   margin-bottom: var(--space-5);
 }
 
 .welcome__lead {
   font-size: var(--text-xl);
   line-height: 1.6;
-  color: var(--color-white);
+  color: var(--color-evergreen);
   margin-bottom: var(--space-4);
   font-weight: 400;
 }
@@ -1632,8 +1632,8 @@ h1, h2, h3, h4, h5, h6 {
 .welcome__text {
   font-size: var(--text-base);
   line-height: 1.7;
-  color: var(--color-white);
-  opacity: 0.65;
+  color: var(--color-evergreen);
+  opacity: 0.55;
   margin-bottom: var(--space-8);
 }
 
@@ -1656,7 +1656,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .welcome__cta:hover {
   background: var(--color-honey);
-  color: var(--color-evergreen);
+  color: var(--color-cream);
   gap: var(--space-4);
 }
 
@@ -1670,7 +1670,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--space-8);
   margin-top: var(--space-8);
   padding-top: var(--space-6);
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(0,0,0,0.06);
 }
 
 .welcome__stat {
@@ -1683,13 +1683,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: 600;
-  color: var(--color-cream);
+  color: var(--color-evergreen);
   line-height: 1;
 }
 
 .welcome__stat-label {
   font-size: var(--text-xs);
-  color: var(--color-sage-light);
+  color: var(--color-sage);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -1757,11 +1757,11 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   width: 100%;
   max-width: 400px;
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--color-white);
+  border: 1px solid var(--color-stone);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
+  box-shadow: var(--shadow-medium);
 }
 
 .welcome__panel-header {
@@ -1775,7 +1775,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.08em;
   margin-bottom: var(--space-5);
   padding-bottom: var(--space-4);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--color-stone);
 }
 
 .welcome__panel-header .material-symbols-outlined {
@@ -1814,7 +1814,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-size: var(--text-base);
   font-weight: 600;
-  color: var(--color-cream);
+  color: var(--color-evergreen);
   line-height: 1.3;
 }
 
@@ -1829,7 +1829,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: var(--space-2);
   margin-top: var(--space-5);
   padding-top: var(--space-4);
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--color-stone);
   font-size: var(--text-xs);
   color: var(--color-sage);
   opacity: 0.8;
