@@ -141,6 +141,36 @@ document.addEventListener('DOMContentLoaded', () => {
     animObserver.observe(el);
   });
 
+  // --- Count-up animation for stats ---
+  const countEls = document.querySelectorAll('[data-count]');
+  if (countEls.length) {
+    const countObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        const duration = 1500;
+        const start = performance.now();
+
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * target);
+          el.textContent = target >= 1000
+            ? current.toLocaleString() + '+'
+            : current + '+';
+          if (progress < 1) requestAnimationFrame(update);
+        }
+
+        requestAnimationFrame(update);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    countEls.forEach(el => countObserver.observe(el));
+  }
+
   // --- Form Submission ---
   const bookingForm = document.getElementById('booking-form');
   if (bookingForm) {

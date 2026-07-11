@@ -71,6 +71,11 @@
 <section class="welcome" id="welcome">
   <div class="welcome__bg"></div>
   <div class="welcome__glow"></div>
+  <div class="welcome__shapes" aria-hidden="true">
+    <div class="welcome__shape welcome__shape--1"></div>
+    <div class="welcome__shape welcome__shape--2"></div>
+    <div class="welcome__shape welcome__shape--3"></div>
+  </div>
   <div class="container welcome__inner">
     <div class="welcome__grid">
       <div class="welcome__content">
@@ -92,21 +97,27 @@
         </div>
         <div class="welcome__stats fade-up" data-delay="350">
           <div class="welcome__stat">
-            <span class="welcome__stat-value">10,000+</span>
+            <span class="welcome__stat-value" data-count="10000">0</span>
             <span class="welcome__stat-label">Patients trusted</span>
           </div>
           <div class="welcome__stat">
-            <span class="welcome__stat-value">45+</span>
+            <span class="welcome__stat-value" data-count="45">0</span>
             <span class="welcome__stat-label">Years combined</span>
           </div>
           <div class="welcome__stat">
-            <span class="welcome__stat-value">3</span>
+            <span class="welcome__stat-value" data-count="3">0</span>
             <span class="welcome__stat-label">Specialists</span>
           </div>
         </div>
       </div>
       <div class="welcome__visual fade-up" data-delay="200">
-        <img src="images/clinic-interior.jpg" alt="" class="welcome__image" aria-hidden="true">
+        <div class="welcome__image-frame">
+          <img src="images/clinic-interior.jpg" alt="" class="welcome__image" aria-hidden="true">
+          <div class="welcome__image-badge">
+            <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+            <span>Multi-specialty clinic</span>
+          </div>
+        </div>
         <div class="welcome__panel">
           <div class="welcome__panel-header">
             <span class="material-symbols-outlined" aria-hidden="true">groups</span>
@@ -149,7 +160,11 @@
       </div>
     </div>
   </div>
-  <div class="section-divider" aria-hidden="true"></div>
+  <div class="welcome__divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path d="M0 40 C360 80 1080 0 1440 40 L1440 80 L0 80 Z"/>
+    </svg>
+  </div>
 </section>
 
 <!-- ============ Our Philosophy ============ -->
@@ -203,42 +218,54 @@
     </div>
     <div class="specialties__grid">
       <div class="specialty-item fade-up">
-        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">ecg_heart</span>
+        <div class="specialty-item__icon-wrap">
+          <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">ecg_heart</span>
+        </div>
         <div class="specialty-item__body">
           <h3 class="specialty-item__title">Cardiology <span class="specialty-item__cluster">Heart &amp; Rhythm</span></h3>
           <p class="specialty-item__text">Preventive screenings, heart failure management, ECG, echocardiography, and interventional cardiology.</p>
         </div>
       </div>
       <div class="specialty-item fade-up" data-delay="100">
-        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">pediatrics</span>
+        <div class="specialty-item__icon-wrap">
+          <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">pediatrics</span>
+        </div>
         <div class="specialty-item__body">
           <h3 class="specialty-item__title">Pediatrics <span class="specialty-item__cluster">Growing Strong</span></h3>
           <p class="specialty-item__text">Well-child visits, immunisations, developmental screenings, and adolescent medicine in a child-friendly setting.</p>
         </div>
       </div>
       <div class="specialty-item fade-up" data-delay="200">
-        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">neurology</span>
+        <div class="specialty-item__icon-wrap">
+          <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">neurology</span>
+        </div>
         <div class="specialty-item__body">
           <h3 class="specialty-item__title">Neurology <span class="specialty-item__cluster">Mind &amp; Movement</span></h3>
           <p class="specialty-item__text">Stroke care, epilepsy management, headache disorders, movement disorders, and nerve conduction studies.</p>
         </div>
       </div>
       <div class="specialty-item fade-up" data-delay="300">
-        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">orthopedics</span>
+        <div class="specialty-item__icon-wrap">
+          <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">orthopedics</span>
+        </div>
         <div class="specialty-item__body">
           <h3 class="specialty-item__title">Orthopedics <span class="specialty-item__cluster">Strength in Motion</span></h3>
           <p class="specialty-item__text">Joint replacements, sports injuries, spine care, fracture management, and rehabilitation therapy.</p>
         </div>
       </div>
       <div class="specialty-item fade-up" data-delay="400">
-        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">pulmonology</span>
+        <div class="specialty-item__icon-wrap">
+          <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">pulmonology</span>
+        </div>
         <div class="specialty-item__body">
           <h3 class="specialty-item__title">Pulmonology <span class="specialty-item__cluster">Breath &amp; Vitality</span></h3>
           <p class="specialty-item__text">Asthma and allergy management, sleep studies, pulmonary function testing, and respiratory therapy.</p>
         </div>
       </div>
       <div class="specialty-item fade-up" data-delay="500">
-        <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">dermatology</span>
+        <div class="specialty-item__icon-wrap">
+          <span class="specialty-item__icon material-symbols-outlined" aria-hidden="true">dermatology</span>
+        </div>
         <div class="specialty-item__body">
           <h3 class="specialty-item__title">Dermatology <span class="specialty-item__cluster">Skin &amp; Care</span></h3>
           <p class="specialty-item__text">Skin cancer screenings, acne and eczema treatment, cosmetic dermatology, and paediatric dermatology.</p>
@@ -338,10 +365,11 @@
     </div>
     <div class="voices__list">
       <article class="voice fade-up">
+        <div class="voice__mark" aria-hidden="true">&ldquo;</div>
         <p class="voice__text">
-          &ldquo;I&rsquo;d been to three other clinics before Sterling. Nobody listened the way Dr. Venkatesh did.
+          I&rsquo;d been to three other clinics before Sterling. Nobody listened the way Dr. Venkatesh did.
           She didn&rsquo;t rush me, didn&rsquo;t look at a screen while I spoke. For the first time, I felt like
-          my health was in good hands.&rdquo;
+          my health was in good hands.
         </p>
         <div class="voice__attribution">
           <span class="voice__name">Priya S.</span>
@@ -349,9 +377,10 @@
         </div>
       </article>
       <article class="voice fade-up" data-delay="100">
+        <div class="voice__mark" aria-hidden="true">&ldquo;</div>
         <p class="voice__text">
-          &ldquo;Taking my son for a check-up used to be a battle. At Sterling, the paediatric team made it
-          feel like play. He actually asked when we could go back. That&rsquo;s the kind of care every parent hopes for.&rdquo;
+          Taking my son for a check-up used to be a battle. At Sterling, the paediatric team made it
+          feel like play. He actually asked when we could go back. That&rsquo;s the kind of care every parent hopes for.
         </p>
         <div class="voice__attribution">
           <span class="voice__name">Arjun K.</span>
@@ -359,14 +388,17 @@
         </div>
       </article>
       <article class="voice voice--featured fade-up" data-delay="200">
-        <p class="voice__text">
-          &ldquo;After my stroke, Dr. Iyer didn&rsquo;t just treat my symptoms&thinsp;&mdash;&thinsp;she treated me.
-          She explained every step of my recovery, celebrated every small win, and gave me back my independence.
-          I can&rsquo;t recommend this team enough.&rdquo;
-        </p>
-        <div class="voice__attribution">
-          <span class="voice__name">Meena R.</span>
-          <span class="voice__detail">Adyar</span>
+        <div class="voice__mark voice__mark--featured" aria-hidden="true">&ldquo;</div>
+        <div class="voice__body">
+          <p class="voice__text">
+            After my stroke, Dr. Iyer didn&rsquo;t just treat my symptoms&thinsp;&mdash;&thinsp;she treated me.
+            She explained every step of my recovery, celebrated every small win, and gave me back my independence.
+            I can&rsquo;t recommend this team enough.
+          </p>
+          <div class="voice__attribution">
+            <span class="voice__name">Meena R.</span>
+            <span class="voice__detail">Adyar</span>
+          </div>
         </div>
       </article>
     </div>
