@@ -8,29 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('copyright-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // --- Dark Mode Toggle ---
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = document.getElementById('theme-icon');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const savedTheme = localStorage.getItem('theme');
-
-  function applyDark(isDark) {
-    document.documentElement.classList.toggle('dark', isDark);
-    themeIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }
-
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    applyDark(true);
-  }
-
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const isDark = !document.documentElement.classList.contains('dark');
-      applyDark(isDark);
-    });
-  }
-
   // --- Navbar Scroll ---
   const nav = document.querySelector('.nav');
   const progressBar = document.getElementById('progressBar');
