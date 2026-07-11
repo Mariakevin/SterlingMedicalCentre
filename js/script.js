@@ -183,24 +183,35 @@ document.addEventListener('DOMContentLoaded', () => {
       if (hasError) return;
 
       const btn = bookingForm.querySelector('.btn--submit');
-      const originalText = btn.textContent;
-
       btn.textContent = 'Booking...';
       btn.disabled = true;
 
-      setTimeout(() => {
-        btn.textContent = 'Visit Booked!';
-        btn.style.background = 'var(--color-honey)';
+      const existingMsg = bookingForm.querySelector('.form__success');
+      if (existingMsg) existingMsg.remove();
 
-        setTimeout(() => {
-          btn.textContent = originalText;
-          btn.style.background = '';
+      setTimeout(() => {
+        btn.style.display = 'none';
+
+        const successMsg = document.createElement('p');
+        successMsg.className = 'form__success';
+        successMsg.textContent = 'Your visit request has been received. We\'ll reach out within 24 hours to confirm.';
+        btn.parentNode.insertBefore(successMsg, btn);
+
+        bookingForm.reset();
+        requiredInputs.forEach(input => {
+          input.classList.remove('form__input--valid', 'form__input--error');
+        });
+
+        const dismissForm = () => {
+          successMsg.remove();
+          btn.style.display = '';
+          btn.textContent = 'Book Your Visit';
           btn.disabled = false;
-          bookingForm.reset();
-          requiredInputs.forEach(input => {
-            input.classList.remove('form__input--valid', 'form__input--error');
-          });
-        }, 3000);
+          bookingForm.removeEventListener('focusin', dismissForm);
+          bookingForm.removeEventListener('change', dismissForm);
+        };
+        bookingForm.addEventListener('focusin', dismissForm, { once: true });
+        bookingForm.addEventListener('change', dismissForm, { once: true });
       }, 1500);
     });
   }

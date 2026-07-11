@@ -1278,6 +1278,22 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: var(--space-2);
 }
 
+.form__success {
+  text-align: center;
+  color: var(--color-evergreen);
+  font-weight: 500;
+  font-size: var(--text-base);
+  padding: var(--space-4);
+  margin-top: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-stone);
+}
+
+:root.dark .form__success {
+  color: var(--color-cream);
+  background: var(--color-stone-dark);
+}
+
 /* --- Footer --- */
 .footer {
   padding: var(--space-12) 0;
@@ -1759,7 +1775,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-honey);
   display: inline-block;
   padding: var(--space-2) var(--space-4);
-  border: 1px solid rgba(107,143,163,0.25);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: var(--radius-full);
   margin-bottom: var(--space-6);
 }
@@ -1783,7 +1799,8 @@ h1, h2, h3, h4, h5, h6 {
 .welcome__text {
   font-size: var(--text-base);
   line-height: 1.7;
-  color: var(--color-sage);
+  color: var(--color-white);
+  opacity: 0.65;
   margin-bottom: var(--space-8);
 }
 
@@ -1839,7 +1856,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .welcome__stat-label {
   font-size: var(--text-xs);
-  color: var(--color-sage);
+  color: var(--color-sage-light);
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -2228,17 +2245,20 @@ h1, h2, h3, h4, h5, h6 {
 .circle-card__portrait {
   aspect-ratio: 1;
   overflow: hidden;
+  background: var(--color-stone);
 }
 
 .circle-card__portrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--duration-slow) var(--ease-out-expo);
+  transition: transform var(--duration-slow) var(--ease-out-expo), filter var(--duration-slow) var(--ease-out-expo);
+  filter: saturate(0.95) brightness(1.02);
 }
 
 .circle-card:hover .circle-card__portrait img {
   transform: scale(1.05);
+  filter: saturate(1) brightness(1.05);
 }
 
 .circle-card__body {
@@ -2622,6 +2642,11 @@ h1, h2, h3, h4, h5, h6 {
 :root.dark .welcome__stat-value,
 :root.dark .welcome__panel-name {
   color: var(--color-evergreen);
+}
+
+:root.dark .welcome__stat-label {
+  color: var(--color-evergreen);
+  opacity: 0.6;
 }
 
 :root.dark .welcome__cta {
