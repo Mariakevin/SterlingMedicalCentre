@@ -2260,14 +2260,14 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-start;
   gap: var(--space-6);
   padding: var(--space-10);
-  background: var(--color-evergreen);
+  background: var(--color-eucalyptus);
   border-radius: var(--radius-lg);
 }
 
 .voice--featured .voice__mark {
   font-size: 5rem;
-  color: var(--color-honey);
-  opacity: 0.4;
+  color: var(--color-cream);
+  opacity: 0.5;
   line-height: 0.5;
   flex-shrink: 0;
 }
@@ -2295,6 +2295,11 @@ h1, h2, h3, h4, h5, h6 {
 .voice--featured .voice__attribution {
   flex-shrink: 0;
   text-align: right;
+}
+
+.voices .label {
+  color: var(--color-cream);
+  opacity: 0.7;
 }
 
 /* --- Your Visit --- */
@@ -2388,7 +2393,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  color: var(--color-sage);
+  color: var(--color-sage-light);
   font-size: var(--text-sm);
 }
 
@@ -2403,7 +2408,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: var(--space-4);
   margin-top: var(--space-2);
   border-top: 1px solid rgba(255,255,255,0.08);
-  color: var(--color-sage);
+  color: var(--color-sage-light);
   font-size: var(--text-sm);
 }
 
@@ -2456,13 +2461,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 700;
-  color: var(--color-evergreen);
+  color: var(--color-cream);
   text-decoration: none;
 }
 
 .roots__tagline {
   font-size: var(--text-sm);
-  color: var(--color-sage);
+  color: var(--color-sage-light);
   margin-top: var(--space-1);
 }
 
@@ -2474,9 +2479,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .roots__link {
   font-size: var(--text-sm);
-  color: var(--color-evergreen);
+  color: var(--color-sage-light);
   text-decoration: none;
-  opacity: 0.7;
+  opacity: 0.85;
   transition: opacity var(--transition-fast);
 }
 
@@ -2491,7 +2496,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 36px;
   height: 36px;
   border-radius: var(--radius-full);
-  background: var(--color-evergreen);
+  background: var(--color-eucalyptus);
   color: var(--color-cream);
   display: flex;
   align-items: center;
@@ -2501,9 +2506,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .roots__social-link:hover {
-  background: var(--color-eucalyptus);
+  background: var(--color-honey);
   transform: translateY(-2px);
-  color: var(--color-white);
+  color: var(--color-cream);
 }
 
 .roots__bottom {
@@ -2515,8 +2520,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .roots__copyright {
   font-size: var(--text-xs);
-  color: var(--color-sage);
-  opacity: 0.7;
+  color: var(--color-sage-light);
+  opacity: 0.6;
 }
 
 
