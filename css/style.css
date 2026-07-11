@@ -1218,13 +1218,21 @@ h1, h2, h3, h4, h5, h6 {
 .form__select--error,
 .form__textarea--error {
   border-color: var(--color-error) !important;
-  box-shadow: 0 0 0 3px rgba(184, 114, 106, 0.12) !important;
+  box-shadow: 0 0 0 3px rgba(184, 26, 46, 0.12) !important;
 }
 
 .form__input--valid,
 .form__select--valid,
 .form__textarea--valid {
   border-color: var(--color-eucalyptus) !important;
+}
+
+.form__error {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-error);
+  margin-top: var(--space-1);
+  min-height: 1em;
 }
 
 .form__textarea {
@@ -2583,15 +2591,6 @@ textarea:focus-visible {
 }
 
 /* --- Form input focus --- */
-.form__input:focus,
-.form__select:focus,
-.form__textarea:focus {
-  border-color: var(--color-eucalyptus);
-  box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.12);
-}
-
-
-
 /* --- Responsive --- */
 @media (max-width: 1024px) {
   .welcome__grid {

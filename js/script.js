@@ -94,6 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
   if (overlay) overlay.addEventListener('click', closeMenu);
 
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('mobile-menu--open')) {
+      closeMenu();
+    }
+  });
+
   // Close mobile menu on link click
   if (mobileMenu) {
     mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -136,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const current = Math.round(eased * target);
           el.textContent = target >= 1000
             ? current.toLocaleString() + '+'
-            : current + '+';
+            : current;
           if (progress < 1) requestAnimationFrame(update);
         }
 
@@ -152,21 +158,60 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookingForm = document.getElementById('booking-form');
   if (bookingForm) {
 
+    function getOrCreateError(input) {
+      let err = input.parentNode.querySelector('.form__error');
+      if (!err) {
+        err = document.createElement('span');
+        err.className = 'form__error';
+        err.id = 'error-' + input.id;
+        err.setAttribute('role', 'alert');
+        input.setAttribute('aria-describedby', err.id);
+        input.parentNode.appendChild(err);
+      }
+      return err;
+    }
+
+    function validateField(input) {
+      const err = getOrCreateError(input);
+      const val = input.value.trim();
+
+      if (!val) {
+        input.classList.add('form__input--error');
+        input.classList.remove('form__input--valid');
+        err.textContent = 'This field is required';
+        return false;
+      }
+
+      if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+        input.classList.add('form__input--error');
+        input.classList.remove('form__input--valid');
+        err.textContent = 'Enter a valid email address';
+        return false;
+      }
+
+      if (input.type === 'tel' && !/^[\d\s\+\-\(\)]{7,20}$/.test(val)) {
+        input.classList.add('form__input--error');
+        input.classList.remove('form__input--valid');
+        err.textContent = 'Enter a valid phone number';
+        return false;
+      }
+
+      input.classList.remove('form__input--error');
+      input.classList.add('form__input--valid');
+      err.textContent = '';
+      return true;
+    }
+
     // Inline validation helpers
     const requiredInputs = bookingForm.querySelectorAll('[required]');
     requiredInputs.forEach(input => {
-      input.addEventListener('blur', () => {
-        if (!input.value.trim()) {
-          input.classList.add('form__input--error');
-        } else {
-          input.classList.remove('form__input--error');
-          input.classList.add('form__input--valid');
-        }
-      });
+      input.addEventListener('blur', () => validateField(input));
       input.addEventListener('input', () => {
         if (input.value.trim()) {
           input.classList.remove('form__input--error');
           input.classList.add('form__input--valid');
+          const err = input.parentNode.querySelector('.form__error');
+          if (err) err.textContent = '';
         } else {
           input.classList.remove('form__input--valid');
         }
@@ -178,16 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
       let hasError = false;
 
       requiredInputs.forEach(input => {
-        if (!input.value.trim()) {
-          input.classList.add('form__input--error');
-          hasError = true;
-        } else {
-          input.classList.remove('form__input--error');
-          input.classList.add('form__input--valid');
-        }
+        if (!validateField(input)) hasError = true;
       });
 
-      if (hasError) return;
+      if (hasError) {
+        const firstErr = bookingForm.querySelector('.form__input--error');
+        if (firstErr) firstErr.focus();
+        return;
+      }
 
       const btn = bookingForm.querySelector('.btn--submit');
       btn.textContent = 'Booking...';
@@ -207,6 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
         bookingForm.reset();
         requiredInputs.forEach(input => {
           input.classList.remove('form__input--valid', 'form__input--error');
+          const err = input.parentNode.querySelector('.form__error');
+          if (err) err.textContent = '';
         });
 
         const dismissForm = () => {
