@@ -247,14 +247,16 @@ h1, h2, h3, h4, h5, h6 {
 .nav__logo-icon {
   width: 32px;
   height: 32px;
-  border-radius: var(--radius-sm);
-  background: var(--color-eucalyptus);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
-  font-size: 18px;
-  font-variation-settings: 'FILL' 1, 'wght' 400;
+  flex-shrink: 0;
+}
+
+.nav__logo-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
 }
 
 .nav__links {
