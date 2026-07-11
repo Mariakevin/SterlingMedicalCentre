@@ -1,22 +1,22 @@
 /* ============================================
    Sterling Medical Centre — Design System
-   Natural Modernism: warm earth + eucalyptus
+   Cool neutral palette: steel blue + ivory + slate
    ============================================ */
 
 /* --- Custom Properties (Design Tokens) --- */
 :root {
   /* Colors */
-  --color-evergreen: #1C1C1C;
-  --color-eucalyptus: #8B3A3A;
-  --color-sage: #8A7A72;
-  --color-sage-light: #C4B8B0;
-  --color-cream: #F5F2EE;
-  --color-stone: #E8E0DA;
-  --color-stone-dark: #2A2420;
-  --color-honey: #C88A2C;
-  --color-honey-light: #E0B050;
+  --color-evergreen: #2D3748;
+  --color-eucalyptus: #6B8FA3;
+  --color-sage: #7A828E;
+  --color-sage-light: #D0D4D8;
+  --color-cream: #F8FAFB;
+  --color-stone: #E2E6EB;
+  --color-stone-dark: #2D3748;
+  --color-honey: #5A7D8A;
+  --color-honey-light: #7A9AA8;
   --color-white: #FFFFFF;
-  --color-error: #B85C4A;
+  --color-error: #B8726A;
 
   /* Typography */
   --font-display: 'Fraunces', Georgia, serif;
@@ -63,9 +63,9 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-soft: 0 4px 24px rgba(28, 28, 28, 0.06);
-  --shadow-medium: 0 8px 40px rgba(28, 28, 28, 0.08);
-  --shadow-hover: 0 16px 56px rgba(28, 28, 28, 0.12);
+  --shadow-soft: 0 4px 24px rgba(45, 55, 72, 0.06);
+  --shadow-medium: 0 8px 40px rgba(45, 55, 72, 0.08);
+  --shadow-hover: 0 16px 56px rgba(45, 55, 72, 0.12);
 
   /* Transitions */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -405,7 +405,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: calc(var(--nav-height) + var(--space-8)) var(--space-8) var(--space-8);
   transform: translateX(100%);
   transition: transform var(--duration-normal) var(--ease-out-expo);
-  box-shadow: -8px 0 40px rgba(28, 28, 28, 0.1);
+  box-shadow: -8px 0 40px rgba(45, 55, 72, 0.1);
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
@@ -418,7 +418,7 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-menu__overlay {
   position: fixed;
   inset: 0;
-  background: rgba(28, 28, 28, 0.4);
+  background: rgba(45, 55, 72, 0.4);
   z-index: 998;
   opacity: 0;
   pointer-events: none;
@@ -546,7 +546,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn--primary:hover {
   background: var(--color-eucalyptus);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(28, 28, 28, 0.2);
+  box-shadow: 0 8px 24px rgba(45, 55, 72, 0.2);
 }
 
 .btn--secondary {
@@ -585,17 +585,17 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, rgba(139, 58, 58, 0.12) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(107, 143, 163, 0.12) 0%, transparent 50%),
     repeating-linear-gradient(
       100deg,
       transparent 0px,
       transparent 40px,
-      rgba(200, 138, 44, 0.06) 40px,
-      rgba(200, 138, 44, 0.06) 41px,
+      rgba(107, 143, 163, 0.06) 40px,
+      rgba(107, 143, 163, 0.06) 41px,
       transparent 41px,
       transparent 80px,
-      rgba(139, 58, 58, 0.04) 80px,
-      rgba(139, 58, 58, 0.04) 81px
+      rgba(107, 143, 163, 0.04) 80px,
+      rgba(107, 143, 163, 0.04) 81px
     );
   pointer-events: none;
   z-index: 2;
@@ -609,8 +609,8 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 120% 40% at 20% 70%, rgba(200, 138, 44, 0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 100% 30% at 60% 85%, rgba(139, 58, 58, 0.06) 0%, transparent 60%);
+    radial-gradient(ellipse 120% 40% at 20% 70%, rgba(107, 143, 163, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 30% at 60% 85%, rgba(107, 143, 163, 0.06) 0%, transparent 60%);
 }
 
 .hero__floating-card {
@@ -803,7 +803,7 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(139, 58, 58, 0.1), transparent);
+  background: linear-gradient(135deg, rgba(107, 143, 163, 0.1), transparent);
   z-index: 1;
 }
 
@@ -885,7 +885,7 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(139, 58, 58, 0.04), rgba(200, 138, 44, 0.03));
+  background: linear-gradient(135deg, rgba(107, 143, 163, 0.04), rgba(107, 143, 163, 0.03));
   opacity: 0;
   transition: opacity var(--duration-normal) var(--ease-out-expo);
   pointer-events: none;
@@ -1233,14 +1233,14 @@ h1, h2, h3, h4, h5, h6 {
 .form__textarea:focus {
   outline: none;
   border-color: var(--color-eucalyptus);
-  box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.15);
+  box-shadow: 0 0 0 3px rgba(107, 143, 163, 0.15);
 }
 
 .form__input--error,
 .form__select--error,
 .form__textarea--error {
   border-color: var(--color-error) !important;
-  box-shadow: 0 0 0 3px rgba(184, 92, 74, 0.12) !important;
+  box-shadow: 0 0 0 3px rgba(184, 114, 106, 0.12) !important;
 }
 
 .form__input--valid,
@@ -1432,17 +1432,17 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Dark Mode --- */
 :root.dark {
-  --color-evergreen: #E8E0DA;
-  --color-eucalyptus: #D46A5A;
-  --color-sage: #B8A8A0;
-  --color-sage-light: #3A322E;
-  --color-cream: #1A1614;
-  --color-stone: #2A2420;
-  --color-stone-dark: #1A1614;
-  --color-honey: #E0B050;
-  --color-honey-light: #C88A2C;
-  --color-white: #1C1C1C;
-  --color-error: #D47A6A;
+  --color-evergreen: #E2E6EB;
+  --color-eucalyptus: #8AACBF;
+  --color-sage: #9AA2AE;
+  --color-sage-light: #3A4048;
+  --color-cream: #1A1E24;
+  --color-stone: #2A3038;
+  --color-stone-dark: #12151A;
+  --color-honey: #6B8FA3;
+  --color-honey-light: #5A7D8A;
+  --color-white: #222830;
+  --color-error: #C0928A;
 
   background: var(--color-cream);
   color: var(--color-evergreen);
@@ -2778,14 +2778,14 @@ textarea:focus-visible {
 .form__select:focus,
 .form__textarea:focus {
   border-color: var(--color-eucalyptus);
-  box-shadow: 0 0 0 3px rgba(139, 58, 58, 0.12);
+  box-shadow: 0 0 0 3px rgba(107, 143, 163, 0.12);
 }
 
 :root.dark .form__input:focus,
 :root.dark .form__select:focus,
 :root.dark .form__textarea:focus {
   border-color: var(--color-eucalyptus);
-  box-shadow: 0 0 0 3px rgba(212, 106, 90, 0.2);
+  box-shadow: 0 0 0 3px rgba(107, 143, 163, 0.2);
 }
 
 /* --- Responsive --- */
