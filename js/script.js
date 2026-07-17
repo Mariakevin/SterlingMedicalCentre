@@ -6,7 +6,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // ========== Scroll-triggered fade-up animations ==========
-  const fadeElements = document.querySelectorAll('.fade-up');
+  const fadeElements = document.querySelectorAll('.fade-up, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur');
   
   const observerOptions = {
     root: null,
@@ -309,6 +309,21 @@ document.addEventListener('DOMContentLoaded', () => {
         trigger.setAttribute('aria-expanded', 'true');
         answer.setAttribute('aria-hidden', 'false');
       }
+    });
+  });
+
+  // ========== Button ripple effect ==========
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      this.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
     });
   });
 
