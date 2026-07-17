@@ -281,6 +281,37 @@ document.addEventListener('DOMContentLoaded', () => {
     input.addEventListener('input', () => clearError(input));
   });
 
+  // ========== FAQ accordion ==========
+  const faqTriggers = document.querySelectorAll('.faq__trigger');
+
+  faqTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq__item');
+      const answer = item.querySelector('.faq__answer');
+      const isOpen = item.classList.contains('open');
+
+      // Close all other FAQ items
+      document.querySelectorAll('.faq__item.open').forEach(openItem => {
+        if (openItem !== item) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq__trigger').setAttribute('aria-expanded', 'false');
+          openItem.querySelector('.faq__answer').setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      // Toggle current item
+      if (isOpen) {
+        item.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        answer.setAttribute('aria-hidden', 'true');
+      } else {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+        answer.setAttribute('aria-hidden', 'false');
+      }
+    });
+  });
+
   // ========== Smooth scroll with nav offset ==========
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
