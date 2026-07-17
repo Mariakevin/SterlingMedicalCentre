@@ -1,286 +1,331 @@
-/* ============================================
-   Sterling Medical Centre — Interactions
-   ============================================ */
+/**
+ * Sterling Medical Centre — Redesign JavaScript
+ * Handles scroll animations, mobile menu, form validation,
+ * count-up stats, progress bar, back-to-top, and active nav tracking.
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // ========== Scroll-triggered fade-up animations ==========
+  const fadeElements = document.querySelectorAll('.fade-up');
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
 
-  // --- Dynamic Year ---
-  const yearEl = document.getElementById('copyright-year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // --- Navbar Scroll ---
-  const nav = document.querySelector('.nav');
-  const progressBar = document.getElementById('progressBar');
-  const backToTop = document.getElementById('backToTop');
-  let lastScroll = 0;
-
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = docHeight > 0 ? (currentScroll / docHeight) * 100 : 0;
-
-    if (currentScroll > 80) {
-      nav.classList.add('nav--scrolled');
-    } else {
-      nav.classList.remove('nav--scrolled');
-    }
-
-    if (progressBar) {
-      progressBar.style.width = scrollPercent + '%';
-    }
-
-    if (backToTop) {
-      backToTop.classList.toggle('back-to-top--visible', currentScroll > 400);
-    }
-
-    lastScroll = currentScroll;
-  }, { passive: true });
-
-  // Back to top click
-  if (backToTop) {
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // --- Active nav link on scroll ---
-  const navLinks = document.querySelectorAll('.nav__link');
-  const sections = [];
-
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('#')) {
-      const section = document.querySelector(href);
-      if (section) sections.push({ el: section, link: link });
-    }
-  });
-
-  const sectionObserver = new IntersectionObserver((entries) => {
+  const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        navLinks.forEach(l => l.classList.remove('nav__link--active'));
-        const match = sections.find(s => s.el === entry.target);
-        if (match) match.link.classList.add('nav__link--active');
+        const delay = entry.target.dataset.delay || 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, parseInt(delay));
+        fadeObserver.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.25,
-    rootMargin: '-80px 0px 0px 0px'
-  });
+  }, observerOptions);
 
-  sections.forEach(s => sectionObserver.observe(s.el));
+  fadeElements.forEach(el => fadeObserver.observe(el));
 
-  // --- Mobile Menu ---
-  const toggleBtn = document.getElementById('menu-toggle');
+  // ========== Mobile menu ==========
+  const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
-  const overlay = document.getElementById('menu-overlay');
-  const closeBtn = document.getElementById('menu-close');
+  const menuOverlay = document.getElementById('menu-overlay');
+  const menuClose = document.getElementById('menu-close');
+  const mobileLinks = mobileMenu.querySelectorAll('.mobile-menu__link, .mobile-menu__cta');
 
   function openMenu() {
-    mobileMenu.classList.add('mobile-menu--open');
-    overlay.classList.add('mobile-menu__overlay--open');
-    toggleBtn.classList.add('nav__toggle--open');
+    mobileMenu.classList.add('active');
+    menuOverlay.classList.add('active');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    menuToggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    // Focus trap: focus first link
+    mobileLinks[0].focus();
   }
 
   function closeMenu() {
-    mobileMenu.classList.remove('mobile-menu--open');
-    overlay.classList.remove('mobile-menu__overlay--open');
-    toggleBtn.classList.remove('nav__toggle--open');
+    mobileMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    menuToggle.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    menuToggle.focus();
   }
 
-  if (toggleBtn) toggleBtn.addEventListener('click', openMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-  if (overlay) overlay.addEventListener('click', closeMenu);
+  menuToggle.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menuOverlay.addEventListener('click', closeMenu);
 
+  // Close on escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu.classList.contains('mobile-menu--open')) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
       closeMenu();
     }
   });
 
-  // Close mobile menu on link click
-  if (mobileMenu) {
-    mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-  }
+  // Focus trap within mobile menu
+  mobileMenu.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    
+    const focusableElements = mobileMenu.querySelectorAll('a, button');
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
 
-  // --- Scroll-triggered animations (Intersection Observer) ---
-  const animObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-up--visible');
-        animObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -60px 0px'
-  });
-
-  document.querySelectorAll('.fade-up').forEach(el => {
-    animObserver.observe(el);
-  });
-
-  // --- Count-up animation for stats ---
-  const countEls = document.querySelectorAll('[data-count]');
-  if (countEls.length) {
-    const countObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = parseInt(el.dataset.count);
-        const duration = 1500;
-        const start = performance.now();
-
-        function update(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = Math.round(eased * target);
-          el.textContent = target >= 1000
-            ? current.toLocaleString() + '+'
-            : current;
-          if (progress < 1) requestAnimationFrame(update);
-        }
-
-        requestAnimationFrame(update);
-        obs.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-
-    countEls.forEach(el => countObserver.observe(el));
-  }
-
-  // --- Form Submission ---
-  const bookingForm = document.getElementById('booking-form');
-  if (bookingForm) {
-
-    function getOrCreateError(input) {
-      let err = input.parentNode.querySelector('.form__error');
-      if (!err) {
-        err = document.createElement('span');
-        err.className = 'form__error';
-        err.id = 'error-' + input.id;
-        err.setAttribute('role', 'alert');
-        input.setAttribute('aria-describedby', err.id);
-        input.parentNode.appendChild(err);
-      }
-      return err;
-    }
-
-    function validateField(input) {
-      const err = getOrCreateError(input);
-      const val = input.value.trim();
-
-      if (!val) {
-        input.classList.add('form__input--error');
-        input.classList.remove('form__input--valid');
-        err.textContent = 'This field is required';
-        return false;
-      }
-
-      if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-        input.classList.add('form__input--error');
-        input.classList.remove('form__input--valid');
-        err.textContent = 'Enter a valid email address';
-        return false;
-      }
-
-      if (input.type === 'tel' && !/^[\d\s\+\-\(\)]{7,20}$/.test(val)) {
-        input.classList.add('form__input--error');
-        input.classList.remove('form__input--valid');
-        err.textContent = 'Enter a valid phone number';
-        return false;
-      }
-
-      input.classList.remove('form__input--error');
-      input.classList.add('form__input--valid');
-      err.textContent = '';
-      return true;
-    }
-
-    // Inline validation helpers
-    const requiredInputs = bookingForm.querySelectorAll('[required]');
-    requiredInputs.forEach(input => {
-      input.addEventListener('blur', () => validateField(input));
-      input.addEventListener('input', () => {
-        if (input.value.trim()) {
-          input.classList.remove('form__input--error');
-          input.classList.add('form__input--valid');
-          const err = input.parentNode.querySelector('.form__error');
-          if (err) err.textContent = '';
-        } else {
-          input.classList.remove('form__input--valid');
-        }
-      });
-    });
-
-    bookingForm.addEventListener('submit', (e) => {
+    if (e.shiftKey && document.activeElement === firstElement) {
       e.preventDefault();
-      let hasError = false;
+      lastElement.focus();
+    } else if (!e.shiftKey && document.activeElement === lastElement) {
+      e.preventDefault();
+      firstElement.focus();
+    }
+  });
 
-      requiredInputs.forEach(input => {
-        if (!validateField(input)) hasError = true;
-      });
+  // Close menu when a link is clicked
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
 
-      if (hasError) {
-        const firstErr = bookingForm.querySelector('.form__input--error');
-        if (firstErr) firstErr.focus();
-        return;
-      }
+  // ========== Progress bar ==========
+  const progressBar = document.getElementById('progressBar');
+  
+  function updateProgressBar() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+  }
 
-      const btn = bookingForm.querySelector('.btn--submit');
-      btn.textContent = 'Booking...';
-      btn.disabled = true;
+  // ========== Nav compact on scroll ==========
+  const navbar = document.getElementById('navbar');
+  
+  function updateNav() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
 
-      const existingMsg = bookingForm.querySelector('.form__success');
-      if (existingMsg) existingMsg.remove();
+  // ========== Back to top ==========
+  const backToTop = document.getElementById('backToTop');
+  
+  function updateBackToTop() {
+    if (window.scrollY > 500) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }
 
-      setTimeout(() => {
-        btn.style.display = 'none';
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
-        const successMsg = document.createElement('p');
-        successMsg.className = 'form__success';
-        successMsg.textContent = 'Your visit request has been received. We\'ll reach out within 24 hours to confirm.';
-        btn.parentNode.insertBefore(successMsg, btn);
+  // ========== Active nav link tracking ==========
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav__link');
 
-        bookingForm.reset();
-        requiredInputs.forEach(input => {
-          input.classList.remove('form__input--valid', 'form__input--error');
-          const err = input.parentNode.querySelector('.form__error');
-          if (err) err.textContent = '';
+  function updateActiveNav() {
+    const scrollPos = window.scrollY + 150;
+
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+
+      if (scrollPos >= top && scrollPos < top + height) {
+        navLinks.forEach(link => {
+          link.classList.remove('nav__link--active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('nav__link--active');
+          }
         });
-
-        const dismissForm = () => {
-          successMsg.remove();
-          btn.style.display = '';
-          btn.textContent = 'Book Your Visit';
-          btn.disabled = false;
-          bookingForm.removeEventListener('focusin', dismissForm);
-          bookingForm.removeEventListener('change', dismissForm);
-        };
-        bookingForm.addEventListener('focusin', dismissForm, { once: true });
-        bookingForm.addEventListener('change', dismissForm, { once: true });
-      }, 1500);
+      }
     });
   }
 
-  // --- Smooth scroll with offset ---
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href === '#' || !href) return;
-      const target = document.querySelector(href);
-      if (!target) return;
+  // ========== Count-up stats ==========
+  const statNumbers = document.querySelectorAll('.trust__number[data-count]');
+  let statsAnimated = false;
 
+  function animateCountUp(element) {
+    const target = parseInt(element.dataset.count);
+    const suffix = element.dataset.suffix || '';
+    const duration = 2000;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(eased * target);
+      
+      element.textContent = current.toLocaleString() + suffix;
+      
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        element.textContent = target.toLocaleString() + suffix;
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !statsAnimated) {
+        statsAnimated = true;
+        statNumbers.forEach(el => animateCountUp(el));
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const trustSection = document.getElementById('trust');
+  if (trustSection) {
+    statsObserver.observe(trustSection);
+  }
+
+  // ========== Form validation ==========
+  const form = document.getElementById('booking-form');
+  const formSuccess = document.getElementById('form-success');
+
+  function showError(input, message) {
+    input.classList.add('error');
+    const errorId = input.id + '-error';
+    const errorEl = document.getElementById(errorId);
+    if (errorEl) {
+      errorEl.textContent = message;
+    }
+  }
+
+  function clearError(input) {
+    input.classList.remove('error');
+    const errorId = input.id + '-error';
+    const errorEl = document.getElementById(errorId);
+    if (errorEl) {
+      errorEl.textContent = '';
+    }
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let isValid = true;
+
+    // Name validation
+    const nameInput = document.getElementById('name');
+    if (!nameInput.value.trim()) {
+      showError(nameInput, 'Please enter your name');
+      isValid = false;
+    } else {
+      clearError(nameInput);
+    }
+
+    // Email validation
+    const emailInput = document.getElementById('email');
+    if (!emailInput.value.trim()) {
+      showError(emailInput, 'Please enter your email');
+      isValid = false;
+    } else if (!validateEmail(emailInput.value)) {
+      showError(emailInput, 'Please enter a valid email address');
+      isValid = false;
+    } else {
+      clearError(emailInput);
+    }
+
+    // Phone validation (optional, but validate format if provided)
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput.value.trim()) {
+      const phoneRegex = /^[\+]?[\d\s\-\(\)]{7,}$/;
+      if (!phoneRegex.test(phoneInput.value.trim())) {
+        showError(phoneInput, 'Please enter a valid phone number');
+        isValid = false;
+      } else {
+        clearError(phoneInput);
+      }
+    } else {
+      clearError(phoneInput);
+    }
+
+    // Message validation
+    const messageInput = document.getElementById('message');
+    if (!messageInput.value.trim()) {
+      showError(messageInput, 'Please enter a message');
+      isValid = false;
+    } else {
+      clearError(messageInput);
+    }
+
+    if (isValid) {
+      // Show success message
+      formSuccess.hidden = false;
+      form.reset();
+      
+      // Hide success after 5 seconds
+      setTimeout(() => {
+        formSuccess.hidden = true;
+      }, 5000);
+    }
+  });
+
+  // Clear errors on input
+  form.querySelectorAll('input, textarea').forEach(input => {
+    input.addEventListener('input', () => clearError(input));
+  });
+
+  // ========== Smooth scroll with nav offset ==========
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      const navHeight = nav.offsetHeight;
-      const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
-      window.scrollTo({ top: targetPos, behavior: 'smooth' });
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const navHeight = navbar.offsetHeight;
+        const targetPosition = targetElement.offsetTop - navHeight - 20;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
     });
   });
 
+  // ========== Scroll event listener (throttled) ==========
+  let ticking = false;
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateProgressBar();
+        updateNav();
+        updateBackToTop();
+        updateActiveNav();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Initial calls
+  updateProgressBar();
+  updateNav();
+  updateBackToTop();
+  updateActiveNav();
+
+  // ========== Copyright year ==========
+  const yearElement = document.getElementById('copyright-year');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
 });
